@@ -1,0 +1,32 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  overflow-x: clip;
+}
+
+.page__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--card-w);
+  align-items: start;
+}
+
+/* ---------- <= 1024px : the hero moves above the card ---------- */
+
+@media (max-width: 1024px) {
+  .page__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page__inner {
+    row-gap: 22px;
+  }
+}

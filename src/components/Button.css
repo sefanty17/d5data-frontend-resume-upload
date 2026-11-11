@@ -1,0 +1,58 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--btn-w);
+  height: var(--btn-h);
+  flex: 0 1 var(--btn-w);
+  min-width: 0;
+  padding: 0 12px;
+  border-radius: var(--radius-btn);
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--fs-btn);
+  line-height: var(--lh-btn);
+  font-weight: 400;
+  letter-spacing: var(--ls-btn);
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.16s ease,
+    transform 0.08s ease,
+    box-shadow 0.16s ease;
+}
+
+.btn--secondary {
+  background-color: var(--btn-secondary);
+}
+
+.btn--primary {
+  background-color: var(--btn-primary);
+}
+
+/* Hover / press states are not drawn in the design;
+   values follow the interaction notes in 设计稿/设计说明.md. */
+@media (hover: hover) {
+  .btn--secondary:hover {
+    background-color: var(--btn-secondary-hover);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--btn-primary-hover);
+  }
+}
+
+.btn--secondary:active {
+  background-color: var(--btn-secondary-press);
+  transform: translateY(1px);
+}
+
+.btn--primary:active {
+  background-color: var(--btn-primary-press);
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--btn-primary);
+  outline-offset: 2px;
+}

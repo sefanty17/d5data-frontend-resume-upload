@@ -1,0 +1,100 @@
+/* Design tokens extracted from the Figma frame "1:20" (1920 x 1080). */
+:root {
+  /* colour */
+  --bg-page: #F8FBF9;
+  --card-bg: #FFFFFF;
+  --text-primary: #000000;
+  --text-muted: #A5A5A5;
+  --text-title: #060326;
+  --upload-bg: #F2FAFF;
+  --upload-border: #0538BB;
+  --icon-blue: #1849D6;
+  --btn-secondary: #75ACFF;
+  --btn-primary: #1B5AFF;
+  --step-ring: #2A4CFE;
+  --step-inner: #85A7FF;
+  --step-track: #DDE0E7;
+
+  /* interaction colours (design does not specify states - see README) */
+  --upload-bg-hover: #EAF6FF;
+  --upload-bg-drag: #E3F2FF;
+  --btn-secondary-hover: #5E9BFF;
+  --btn-secondary-press: #4F8DF5;
+  --btn-primary-hover: #0F4CE0;
+  --btn-primary-press: #0B43C8;
+  --danger: #D64545;
+
+  /* radius */
+  --radius-card: 32px;
+  --radius-upload: 15px;
+  --radius-btn: 8px;
+  --radius-bar: 2px;
+
+  /* shadow */
+  --shadow-card: 0 2px 20px rgba(19, 67, 112, 0.15);
+  --shadow-dot: 0 7px 64px rgba(0, 0, 0, 0.07);
+
+  /* typography */
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --fs-hero: 40px;
+  --lh-hero: 55px;
+  --fs-lead: 20px;
+  --lh-lead: 35px;
+  --fs-card-title: 36px;
+  --lh-card-title: 35px;
+  --fs-hint: 16px;
+  --lh-hint: 32px;
+  --fs-btn: 24px;
+  --lh-btn: 35px;
+  --fs-step: 11px;
+  --lh-step: 13px;
+  --ls-card-title: 2.88px;
+  --ls-btn: 1.92px;
+
+  /* layout - measured from the 1920 x 1080 frame */
+  --pad-x: 102px;
+  --pad-top: 103px;
+  --pad-bottom: 55px;
+  --card-w: 943px;
+  --card-pad-x: 129px;
+  --card-pad-top: 30px;
+  --card-pad-bottom: 86px;
+  --gap-title: 53px;
+  --gap-actions: 98px;
+  --gap-stepper: 101px;
+  --drop-h: 420px;
+  --btn-w: 272px;
+  --btn-h: 67px;
+  --btn-gap: 29px;
+  --stepper-w: 343px;
+  --stepper-progress: 87.17%;
+}
+
+/* 1025px - 1919px: keep the desktop composition, let the shell breathe. */
+@media (max-width: 1919px) {
+  :root {
+    --pad-x: clamp(24px, 5.3125vw, 102px);
+    --card-w: clamp(560px, 49.1vw, 943px);
+    --card-pad-x: clamp(32px, 6.72vw, 129px);
+  }
+}
+
+/* 1024px and below: stacked layout - the card spans the full column. */
+@media (max-width: 1024px) {
+  :root {
+    --pad-x: 32px;
+    --pad-top: 48px;
+    --pad-bottom: 40px;
+    --card-w: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --pad-x: 20px;
+    --pad-top: 32px;
+    --pad-bottom: 28px;
+    --stepper-w: 240px;
+  }
+}

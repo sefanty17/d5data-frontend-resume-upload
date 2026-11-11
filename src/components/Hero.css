@@ -1,0 +1,83 @@
+.hero {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding-top: 21px;
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.hero__lead {
+  max-width: 696px;
+  margin-top: 20px;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--text-muted);
+}
+
+/* The 763 x 569 illustration sits at x:0 / y:511 of the 1920 x 1080 frame,
+   i.e. flush with the bottom-left corner of the page. It is sized from the
+   space left of the card so it can never collide with it. */
+.page__art {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  width: min(39.74%, calc(100% - var(--pad-x) - var(--card-w) - 10px));
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Desktop widths below the 1920 artboard: keep the proportions readable. */
+@media (max-width: 1439px) {
+  .hero__title {
+    font-size: clamp(28px, 2.78vw, 40px);
+    line-height: 1.375;
+  }
+
+  .hero__lead {
+    margin-top: 14px;
+    font-size: clamp(16px, 1.39vw, 20px);
+    line-height: 1.75;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 0;
+  }
+
+  .hero__title {
+    font-size: clamp(30px, 4.4vw, 40px);
+    line-height: 1.3;
+  }
+
+  .hero__lead {
+    max-width: 640px;
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .page__art {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__lead {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}

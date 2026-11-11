@@ -1,0 +1,56 @@
+/* 由 Figma 节点 1:20 提取，2026-11-11 */
+:root {
+  /* color */
+  --bg-page: #F8FBF9;
+  --card-bg: #FFFFFF;
+  --text-primary: #000000;
+  --text-muted: #A5A5A5;
+  --text-title: #060326;
+  --upload-bg: #F2FAFF;
+  --upload-border: #0538BB;
+  --icon-blue: #1849D6;
+  --btn-secondary: #75ACFF;
+  --btn-primary: #1B5AFF;
+  --step-ring: #2A4CFE;
+  --step-inner: #85A7FF;
+  --step-track: #DDE0E7;
+
+  /* radius */
+  --radius-card: 32px;
+  --radius-upload: 15px;
+  --radius-btn: 8px;
+  --radius-bar: 2px;
+
+  /* shadow */
+  --shadow-card: 0 2px 20px rgba(19, 67, 112, 0.15);
+  --shadow-dot: 0 7px 64px rgba(0, 0, 0, 0.07);
+
+  /* typography */
+  --font-sans: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --fs-hero: 40px;
+  --lh-hero: 55px;
+  --fs-lead: 20px;
+  --lh-lead: 35px;
+  --fs-card-title: 36px;
+  --lh-card-title: 35px;
+  --fs-hint: 16px;
+  --lh-hint: 32px;
+  --fs-btn: 24px;
+  --lh-btn: 35px;
+  --fs-step: 11px;
+  --lh-step: 13px;
+  --ls-card-title: 2.88px;
+  --ls-btn: 1.92px;
+
+  /* layout */
+  --page-pad: 102px;
+  --card-w: 943px;
+  --card-pad-x: 129px;
+  --card-pad-y: 30px;
+  --upload-w: 685px;
+  --upload-h: 420px;
+  --btn-w: 272px;
+  --btn-h: 67px;
+  --btn-gap: 29px;
+  --stepper-w: 343px;
+}

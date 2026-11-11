@@ -1,0 +1,83 @@
+.stepper {
+  position: relative;
+  width: var(--stepper-w);
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Track + completed part of the track. */
+.stepper::before,
+.stepper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  height: 4px;
+  border-radius: var(--radius-bar);
+  z-index: 0;
+}
+
+.stepper::before {
+  width: 100%;
+  background-color: var(--step-track);
+}
+
+.stepper::after {
+  width: var(--stepper-progress);
+  background-color: var(--step-inner);
+}
+
+.stepper__item {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--step-ring);
+  box-shadow: var(--shadow-dot);
+}
+
+/* 26px inner disc -> 3px ring, exactly as measured in the frame. */
+.stepper__item::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background-color: var(--step-inner);
+}
+
+.stepper__item--1 {
+  left: 28px;
+}
+
+.stepper__item--2 {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.stepper__item--3 {
+  right: 27px;
+}
+
+.stepper__check,
+.stepper__number {
+  position: relative;
+  z-index: 1;
+}
+
+.stepper__check {
+  width: 10px;
+  height: 7px;
+}
+
+.stepper__number {
+  font-size: var(--fs-step);
+  line-height: var(--lh-step);
+  font-weight: 500;
+  color: #fff;
+}

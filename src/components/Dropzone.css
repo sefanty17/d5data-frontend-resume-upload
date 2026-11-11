@@ -1,0 +1,248 @@
+.dropzone {
+  position: relative;
+  height: var(--drop-h);
+  border-radius: var(--radius-upload);
+  background-color: var(--upload-bg);
+  isolation: isolate;
+  transition: background-color 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- border ---------- */
+
+.dropzone__border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.dropzone__border-path {
+  /* 1px stroke drawn inside the 685 x 420 box (Figma strokeAlign: INSIDE) */
+  x: 0.5px;
+  y: 0.75px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  rx: 14.5px;
+  fill: none;
+  stroke: var(--upload-border);
+  stroke-width: 1px;
+  stroke-dasharray: 10 10;
+  /* nudges the dash rhythm onto the same phase as the Figma path */
+  stroke-dashoffset: 5.5px;
+}
+
+/* ---------- states ---------- */
+
+@media (hover: hover) {
+  .dropzone:hover {
+    background-color: var(--upload-bg-hover);
+  }
+
+  .dropzone:hover .dropzone__border-path {
+    stroke: var(--btn-primary);
+    stroke-dasharray: none;
+  }
+}
+
+.dropzone[data-dragging="true"],
+.dropzone[data-dragging="true"]:hover {
+  background-color: var(--upload-bg-drag);
+}
+
+.dropzone[data-dragging="true"] .dropzone__border-path,
+.dropzone[data-dragging="true"]:hover .dropzone__border-path {
+  stroke: var(--btn-primary);
+  stroke-dasharray: none;
+}
+
+.dropzone[data-pressed="true"],
+.dropzone[data-pressed="true"]:hover {
+  background-color: var(--upload-bg-drag);
+}
+
+.dropzone[data-pressed="true"] .dropzone__border-path,
+.dropzone[data-pressed="true"]:hover .dropzone__border-path {
+  stroke: var(--btn-primary);
+  stroke-dasharray: none;
+}
+
+.dropzone:has(.dropzone__hit:focus-visible) {
+  outline: 2px solid var(--btn-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- hit area + native input ---------- */
+
+.dropzone__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.dropzone__hit:focus-visible {
+  outline: none;
+}
+
+.dropzone__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- empty state ---------- */
+
+.dropzone__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 160px 24px 0;
+  pointer-events: none;
+}
+
+.dropzone__icon {
+  width: 58px;
+  height: 39px;
+  margin-bottom: 14px;
+}
+
+.dropzone__hint {
+  max-width: 499px;
+  font-size: var(--fs-hint);
+  line-height: var(--lh-hint);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.dropzone__error {
+  max-width: 499px;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--danger);
+  text-align: center;
+}
+
+/* With a file selected the message is out of flow, so a rejected replacement
+   stays visible without shifting the name / actions block. */
+.dropzone__content--filled .dropzone__error {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  left: 24px;
+  margin: 0 auto;
+}
+
+/* ---------- filled state ---------- */
+
+.dropzone__content--filled {
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.dropzone__badge {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background-color: #e7f0ff;
+}
+
+.dropzone__badge img {
+  width: 22px;
+  height: 16px;
+}
+
+.dropzone__filename {
+  max-width: 100%;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  color: var(--text-title);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropzone__meta {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--text-muted);
+}
+
+.dropzone__actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  pointer-events: auto;
+}
+
+.dropzone__action {
+  padding: 4px 2px;
+  border-radius: 4px;
+  color: var(--btn-primary);
+  font-size: 15px;
+  line-height: 22px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.dropzone__action:hover {
+  color: var(--btn-primary-hover);
+}
+
+.dropzone__action:focus-visible {
+  outline: 2px solid var(--btn-primary);
+  outline-offset: 2px;
+}
+
+.dropzone__action-sep {
+  width: 1px;
+  height: 14px;
+  background-color: #d5dbe6;
+}
+
+/* ---------- error state on tablet / mobile ----------
+   At <= 1024px the drop area is only 280px (220px <= 640px) tall, so an
+   absolutely positioned error would sit on top of the file actions. Let the
+   box grow to fit the message instead. Desktop keeps the fixed-height box. */
+@media (max-width: 1024px) {
+  .dropzone:has(.dropzone__error) {
+    height: auto;
+    min-height: var(--drop-h);
+  }
+
+  .dropzone:has(.dropzone__error) .dropzone__content {
+    position: relative;
+    min-height: var(--drop-h);
+  }
+
+  .dropzone__content--filled .dropzone__error {
+    position: static;
+    margin: 8px auto 0;
+  }
+}

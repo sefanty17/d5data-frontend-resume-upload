@@ -1,0 +1,75 @@
+.card {
+  position: relative;
+  z-index: 1;
+  width: var(--card-w);
+  padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card__title {
+  font-size: var(--fs-card-title);
+  line-height: var(--lh-card-title);
+  font-weight: 500;
+  letter-spacing: var(--ls-card-title);
+  color: var(--text-title);
+}
+
+.card__dropzone {
+  margin-top: var(--gap-title);
+}
+
+.card__actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--btn-gap);
+  margin-top: var(--gap-actions);
+}
+
+.card__stepper {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--gap-stepper);
+}
+
+/* ---------- <= 1024px : stacked layout ---------- */
+
+@media (max-width: 1024px) {
+  .card {
+    --card-pad-top: 28px;
+    --card-pad-x: 24px;
+    --card-pad-bottom: 32px;
+    --gap-title: 24px;
+    --gap-actions: 32px;
+    --gap-stepper: 32px;
+    --drop-h: 280px;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    --card-pad-top: 20px;
+    --card-pad-x: 20px;
+    --card-pad-bottom: 24px;
+    --gap-title: 16px;
+    --gap-actions: 24px;
+    --gap-stepper: 28px;
+    --drop-h: 220px;
+    --btn-gap: 12px;
+    border-radius: 20px;
+  }
+
+  .card__actions {
+    flex-direction: column;
+  }
+
+  .card__actions .btn {
+    width: 100%;
+    flex: 0 0 auto;
+    height: 56px;
+    font-size: 18px;
+    letter-spacing: 1.4px;
+  }
+}
